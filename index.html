@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8">
+  <title>Звіт Web Технології</title>
+  <style>
+    body {
+      margin: 0;
+      display: flex;
+      font-family: Arial, sans-serif;
+    }
+    aside {
+      width: 250px;
+      background: #f4f4f4;
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      height: 100vh;
+      box-shadow: 2px 0 5px rgba(0,0,0,0.1);
+    }
+    aside button {
+      text-transform: uppercase;
+      font-weight: bold;
+      background: white;
+      border: 1px solid #ccc;
+      padding: 10px;
+      cursor: pointer;
+      border-radius: 8px;
+      transition: background 0.2s;
+    }
+    aside button:hover {
+      background: #ddd;
+    }
+    main {
+      flex-grow: 1;
+      padding: 20px;
+      overflow-y: auto;
+    }
+    header {
+      background: #eee;
+      padding: 20px;
+      text-align: center;
+      border-radius: 10px;
+      position: relative;
+    }
+    #student-photo {
+      position: absolute;
+      top: 5px;
+      right: 20px;
+      width: 100px;
+      height: auto;
+      border: 2px solid #aaa;
+    }
+    #content {
+      margin-top: 20px;
+    }
+    img {
+      max-width: 100%;
+      height: auto;
+      border: 1px solid #ccc;
+      margin-bottom: 10px;
+      border-radius: 10px;
+    }
+    ul {
+      padding-left: 20px;
+    }
+  </style>
+</head>
+<body>
+<aside>
+  <button onclick="loadContent('course')">НАЗВА КУРСУ</button>
+  <button onclick="loadContent('repo')">ПОСИЛАННЯ НА РЕПОЗИТОРІЙ</button>
+  <button onclick="loadContent('certificate')">СЕРТИФІКАТ</button>
+  <button onclick="loadContent('syllabus')">ЗМІСТ КУРСУ</button>
+  <button onclick="loadContent('tests')">ТЕСТИ ПО ТЕМАМ</button>
+  <button onclick="loadContent('conclusion')">ВИСНОВКИ</button>
+</aside>
+
+<main>
+  <header>
+    <h2>ЗВІТ З ДИСЦИПЛІНИ «WEB-ОРІЄНТОВАНІ ТЕХНОЛОГІЇ»</h2>
+    <p>Студентка гр. ІС-23 — Станкова Ірина Віталіївна</p>
+    <img id="student-photo" src="assets/images/me.JPG" alt="Фото студентки">
+  </header>
+
+  <div id="content">Оберіть розділ зліва для перегляду вмісту</div>
+</main>
+
+<script>
+  function loadContent(section) {
+    const content = document.getElementById("content");
+    switch(section) {
+      case 'course':
+        content.innerHTML = `
+            <h3>Назва курсу</h3>
+            <p><strong>The Complete Web Development Bootcamp (Angela Yu)</strong></p>
+          `;
+        break;
+
+      case 'repo':
+        content.innerHTML = `
+            <h3>Репозиторій з виконаними завданнями</h3>
+            <p><a href="https://github.com/ssstankova/Web" target="_blank">GitHub посилання</a></p>
+          `;
+        break;
+
+      case 'certificate':
+        content.innerHTML = `
+            <h3>Сертифікат</h3>
+            <img src="assets/images/web_certificate.png" alt="Сертифікат">
+          `;
+        break;
+
+      case 'syllabus':
+        content.innerHTML = `
+            <h3>Зміст курсу</h3>
+            <h4>Front-End Web Development</h4>
+            <ul>
+              <li>HTML5, CSS3, Flexbox, Grid, Bootstrap 5</li>
+              <li>JavaScript ES6, DOM, події, jQuery</li>
+              <li>Робота з Git, GitHub, командний рядок Bash</li>
+            </ul>
+            <h4>Back-End Web Development</h4>
+            <ul>
+              <li>Node.js, Express.js, NPM, EJS</li>
+              <li>REST API, HTTP запити, робота з даними</li>
+              <li>SQL, PostgreSQL, аутентифікація</li>
+            </ul>
+            <h4>Розробка з React та Web3</h4>
+            <ul>
+              <li>React.js, компоненти, React Hooks</li>
+              <li>Web design та деплой на GitHub Pages, Render, Heroku</li>
+              <li>Web3 на Internet Computer, NFT, контракти, блокчейн</li>
+            </ul>
+          `;
+        break;
+
+      case 'tests':
+        content.innerHTML = `
+            <h3>Тести по темам</h3>
+            <p>Тест 1:</p>
+            <img src="assets/images/Quiz1.png" alt="Тест 1">
+            <p>Тест 2:</p>
+            <img src="assets/images/Quiz2.png" alt="Тест 2">
+            <p>Тест 3:</p>
+            <img src="assets/images/Quiz3.png" alt="Тест 3">
+            <p>Тест 4:</p>
+            <img src="assets/images/Quiz4.png" alt="Тест 4">
+          `;
+        break;
+
+      case 'conclusion':
+        content.innerHTML = `
+            <h3>Висновки</h3>
+            <p>Після проходження курсу я здобула глибоке та системне розуміння процесу розробки сучасних вебресурсів — від створення адаптивних інтерфейсів за допомогою HTML та CSS до реалізації складної серверної логіки на Node.js з підключенням баз даних, авторизацією та обробкою запитів.</p>
+            <p>Я навчилась ефективно працювати з React, будувати REST API, налаштовувати деплой на різних хостингах, а також ознайомилась з основами Web3-технологій та їх інтеграцією у вебдодатки. Курс допоміг мені сформувати цілісне бачення повного циклу веброзробки — від ідеї до готового продукту.</p>
+            <p>Ці знання стали для мене потужним фундаментом для подальшого професійного розвитку, створення власних проєктів та активної участі в командній роботі. Я відчула впевненість у своїх силах і чітко бачу напрям, у якому хочу розвиватись у сфері ІТ.</p>
+          `;
+        break;
+    }
+  }
+</script>
+</body>
+</html>
